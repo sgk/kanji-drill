@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>漢字ドリル</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>漢字ドリル</h1>
+      <div class="controls">
+        <label for="grade-select">学年</label>
+        <select id="grade-select" aria-label="学年を選択">
+          <option value="">選択してください</option>
+        </select>
+        <button id="generate-button" type="button" disabled>問題を出す</button>
+        <button id="toggle-all-button" type="button" disabled>すべての漢字を表示する</button>
+      </div>
+    </header>
+    <main>
+      <section aria-live="polite" id="question-area" class="panel">
+        <div class="panel-header">
+          <h2>出題</h2>
+          <span class="count-label">問題数: <span id="question-count">0</span></span>
+        </div>
+        <p class="placeholder">まだ出題されていません。</p>
+        <ul id="question-list" class="kanji-list"></ul>
+      </section>
+      <section id="all-area" class="panel hidden">
+        <div class="panel-header">
+          <h2>全部の漢字</h2>
+          <button id="reset-button" type="button" disabled>進捗をリセット</button>
+        </div>
+        <ul id="all-list" class="kanji-list"></ul>
+        <div class="view-all-note">
+          <p>正答は「こたえ」ボタンを押した場合にのみ表示されます。</p>
+        </div>
+      </section>
+    </main>
+    <template id="kanji-item-template">
+      <li class="kanji-item">
+        <div class="question">
+          <span class="reading"></span>
+          <div class="controls-row">
+            <button type="button" class="show-answer-button">こたえ</button>
+            <span class="hint hidden"></span>
+          </div>
+        </div>
+        <label class="memorized-toggle">
+          <input type="checkbox" /> 覚えた
+        </label>
+      </li>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>
